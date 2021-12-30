@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1827E16F277DAE360082EDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E16E277DAE360082EDD7 /* AppDelegate.swift */; };
+		1827E173277DAE360082EDD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E172277DAE360082EDD7 /* ViewController.swift */; };
+		1827E176277DAE360082EDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827E174277DAE360082EDD7 /* Main.storyboard */; };
+		1827E178277DAE3A0082EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827E177277DAE3A0082EDD7 /* Assets.xcassets */; };
+		1827E17B277DAE3A0082EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827E179277DAE3A0082EDD7 /* LaunchScreen.storyboard */; };
+		1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E184277DAFB80082EDD7 /* RippleEffectViewController.swift */; };
+		1827E195277DAFB90082EDD7 /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E185277DAFB80082EDD7 /* RippleView.swift */; };
+		1827E196277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E188277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift */; };
+		1827E197277DAFB90082EDD7 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E189277DAFB90082EDD7 /* ProgressBar.swift */; };
+		1827E198277DAFB90082EDD7 /* LightAroundEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E18B277DAFB90082EDD7 /* LightAroundEffectView.swift */; };
+		1827E199277DAFB90082EDD7 /* LightAroundEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E18D277DAFB90082EDD7 /* LightAroundEffectViewController.swift */; };
+		1827E19A277DAFB90082EDD7 /* WaveEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E190277DAFB90082EDD7 /* WaveEffectViewController.swift */; };
+		1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E191277DAFB90082EDD7 /* UserHomePageTagView.swift */; };
+		1827E19C277DAFB90082EDD7 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E192277DAFB90082EDD7 /* WaveView.swift */; };
+		1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */; };
+		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04D51440D7A28D950E9265D1 /* Pods-iOSEffect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEffect.debug.xcconfig"; path = "Target Support Files/Pods-iOSEffect/Pods-iOSEffect.debug.xcconfig"; sourceTree = "<group>"; };
+		1827E16B277DAE360082EDD7 /* iOSEffect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEffect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1827E16E277DAE360082EDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1827E172277DAE360082EDD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1827E175277DAE360082EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1827E177277DAE3A0082EDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1827E17A277DAE3A0082EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1827E17C277DAE3A0082EDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1827E184277DAFB80082EDD7 /* RippleEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RippleEffectViewController.swift; sourceTree = "<group>"; };
+		1827E185277DAFB80082EDD7 /* RippleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
+		1827E188277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreUpgradeEffectViewController.swift; sourceTree = "<group>"; };
+		1827E189277DAFB90082EDD7 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		1827E18B277DAFB90082EDD7 /* LightAroundEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightAroundEffectView.swift; sourceTree = "<group>"; };
+		1827E18D277DAFB90082EDD7 /* LightAroundEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightAroundEffectViewController.swift; sourceTree = "<group>"; };
+		1827E190277DAFB90082EDD7 /* WaveEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveEffectViewController.swift; sourceTree = "<group>"; };
+		1827E191277DAFB90082EDD7 /* UserHomePageTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHomePageTagView.swift; sourceTree = "<group>"; };
+		1827E192277DAFB90082EDD7 /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankAvatarTagView.swift; sourceTree = "<group>"; };
+		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C160E135BD16E0D85702D707 /* Pods-iOSEffect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEffect.release.xcconfig"; path = "Target Support Files/Pods-iOSEffect/Pods-iOSEffect.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1827E168277DAE360082EDD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1827E162277DAE360082EDD7 = {
+			isa = PBXGroup;
+			children = (
+				1827E16D277DAE360082EDD7 /* iOSEffect */,
+				1827E16C277DAE360082EDD7 /* Products */,
+				CFE59BD65F5754362B25DA82 /* Pods */,
+				D90152BBD80CAA465D492EFC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1827E16C277DAE360082EDD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1827E16B277DAE360082EDD7 /* iOSEffect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1827E16D277DAE360082EDD7 /* iOSEffect */ = {
+			isa = PBXGroup;
+			children = (
+				1827E18A277DAFB90082EDD7 /* LightAroundEffect */,
+				1827E182277DAFB80082EDD7 /* RippleEffect */,
+				1827E186277DAFB90082EDD7 /* ScoreUpgradeEffect */,
+				1827E18E277DAFB90082EDD7 /* WaveEffect */,
+				1827E16E277DAE360082EDD7 /* AppDelegate.swift */,
+				1827E172277DAE360082EDD7 /* ViewController.swift */,
+				1827E174277DAE360082EDD7 /* Main.storyboard */,
+				1827E177277DAE3A0082EDD7 /* Assets.xcassets */,
+				1827E179277DAE3A0082EDD7 /* LaunchScreen.storyboard */,
+				1827E17C277DAE3A0082EDD7 /* Info.plist */,
+			);
+			path = iOSEffect;
+			sourceTree = "<group>";
+		};
+		1827E182277DAFB80082EDD7 /* RippleEffect */ = {
+			isa = PBXGroup;
+			children = (
+				1827E183277DAFB80082EDD7 /* Example */,
+				1827E185277DAFB80082EDD7 /* RippleView.swift */,
+			);
+			path = RippleEffect;
+			sourceTree = "<group>";
+		};
+		1827E183277DAFB80082EDD7 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				1827E184277DAFB80082EDD7 /* RippleEffectViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		1827E186277DAFB90082EDD7 /* ScoreUpgradeEffect */ = {
+			isa = PBXGroup;
+			children = (
+				1827E187277DAFB90082EDD7 /* Example */,
+				1827E189277DAFB90082EDD7 /* ProgressBar.swift */,
+			);
+			path = ScoreUpgradeEffect;
+			sourceTree = "<group>";
+		};
+		1827E187277DAFB90082EDD7 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				1827E188277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		1827E18A277DAFB90082EDD7 /* LightAroundEffect */ = {
+			isa = PBXGroup;
+			children = (
+				1827E18B277DAFB90082EDD7 /* LightAroundEffectView.swift */,
+				1827E18C277DAFB90082EDD7 /* Example */,
+			);
+			path = LightAroundEffect;
+			sourceTree = "<group>";
+		};
+		1827E18C277DAFB90082EDD7 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				1827E18D277DAFB90082EDD7 /* LightAroundEffectViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		1827E18E277DAFB90082EDD7 /* WaveEffect */ = {
+			isa = PBXGroup;
+			children = (
+				1827E18F277DAFB90082EDD7 /* Example */,
+				1827E191277DAFB90082EDD7 /* UserHomePageTagView.swift */,
+				1827E192277DAFB90082EDD7 /* WaveView.swift */,
+				1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */,
+			);
+			path = WaveEffect;
+			sourceTree = "<group>";
+		};
+		1827E18F277DAFB90082EDD7 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				1827E190277DAFB90082EDD7 /* WaveEffectViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		CFE59BD65F5754362B25DA82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04D51440D7A28D950E9265D1 /* Pods-iOSEffect.debug.xcconfig */,
+				C160E135BD16E0D85702D707 /* Pods-iOSEffect.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D90152BBD80CAA465D492EFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1827E16A277DAE360082EDD7 /* iOSEffect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1827E17F277DAE3A0082EDD7 /* Build configuration list for PBXNativeTarget "iOSEffect" */;
+			buildPhases = (
+				C813B7E5BBE4D1A2C6A607F7 /* [CP] Check Pods Manifest.lock */,
+				1827E167277DAE360082EDD7 /* Sources */,
+				1827E168277DAE360082EDD7 /* Frameworks */,
+				1827E169277DAE360082EDD7 /* Resources */,
+				4B75434D5D284CBAF7267923 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSEffect;
+			productName = iOSEffect;
+			productReference = 1827E16B277DAE360082EDD7 /* iOSEffect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1827E163277DAE360082EDD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					1827E16A277DAE360082EDD7 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 1827E166277DAE360082EDD7 /* Build configuration list for PBXProject "iOSEffect" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1827E162277DAE360082EDD7;
+			productRefGroup = 1827E16C277DAE360082EDD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1827E16A277DAE360082EDD7 /* iOSEffect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1827E169277DAE360082EDD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1827E17B277DAE3A0082EDD7 /* LaunchScreen.storyboard in Resources */,
+				1827E178277DAE3A0082EDD7 /* Assets.xcassets in Resources */,
+				1827E176277DAE360082EDD7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B75434D5D284CBAF7267923 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSEffect/Pods-iOSEffect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSEffect/Pods-iOSEffect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSEffect/Pods-iOSEffect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C813B7E5BBE4D1A2C6A607F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSEffect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1827E167277DAE360082EDD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1827E19C277DAFB90082EDD7 /* WaveView.swift in Sources */,
+				1827E196277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift in Sources */,
+				1827E173277DAE360082EDD7 /* ViewController.swift in Sources */,
+				1827E19A277DAFB90082EDD7 /* WaveEffectViewController.swift in Sources */,
+				1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */,
+				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
+				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
+				1827E195277DAFB90082EDD7 /* RippleView.swift in Sources */,
+				1827E197277DAFB90082EDD7 /* ProgressBar.swift in Sources */,
+				1827E199277DAFB90082EDD7 /* LightAroundEffectViewController.swift in Sources */,
+				1827E198277DAFB90082EDD7 /* LightAroundEffectView.swift in Sources */,
+				1827E16F277DAE360082EDD7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1827E174277DAE360082EDD7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1827E175277DAE360082EDD7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1827E179277DAE3A0082EDD7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1827E17A277DAE3A0082EDD7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1827E17D277DAE3A0082EDD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1827E17E277DAE3A0082EDD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1827E180277DAE3A0082EDD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04D51440D7A28D950E9265D1 /* Pods-iOSEffect.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FMWD84568J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSEffect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ohla.buttoneffect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1827E181277DAE3A0082EDD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C160E135BD16E0D85702D707 /* Pods-iOSEffect.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FMWD84568J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOSEffect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ohla.buttoneffect;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1827E166277DAE360082EDD7 /* Build configuration list for PBXProject "iOSEffect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1827E17D277DAE3A0082EDD7 /* Debug */,
+				1827E17E277DAE3A0082EDD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1827E17F277DAE3A0082EDD7 /* Build configuration list for PBXNativeTarget "iOSEffect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1827E180277DAE3A0082EDD7 /* Debug */,
+				1827E181277DAE3A0082EDD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1827E163277DAE360082EDD7 /* Project object */;
+}
