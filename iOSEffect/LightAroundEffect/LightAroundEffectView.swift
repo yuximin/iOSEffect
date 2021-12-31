@@ -170,8 +170,6 @@ class LightAroundEffectView: UIView {
             guard let self = self else { return }
             viewTop.transform = CGAffineTransform(translationX: viewTop.bounds.width + self.targetWidth, y: 0)
             viewBottom.transform = CGAffineTransform(translationX: -(viewBottom.bounds.width + self.targetWidth), y: 0)
-        } completion: { _ in
-            print(viewBottom)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + verticalDelayTime) { [weak self] in

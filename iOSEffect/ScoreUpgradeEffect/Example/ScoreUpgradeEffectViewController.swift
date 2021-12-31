@@ -28,10 +28,16 @@ class ScoreUpgradeEffectViewController: UIViewController {
     private func setupSubviews() {
         view.addSubview(upgradeView)
         upgradeView.addSubview(titleLab)
+        upgradeView.addSubview(integralLab)
+        upgradeView.addSubview(rankView)
         upgradeView.addSubview(progressBar)
         
-        view.addSubview(beginProgressButton)
+        view.addSubview(startProgressButton)
         view.addSubview(stopProgressButton)
+        view.addSubview(startTitleUpgradeButton)
+        view.addSubview(stopTitleUpgradeButton)
+        view.addSubview(startIntegralUpgradeButton)
+        view.addSubview(stopIntegralUpgradeButton)
     }
     
     private func setupConstraints() {
@@ -48,6 +54,16 @@ class ScoreUpgradeEffectViewController: UIViewController {
             make.top.equalToSuperview().offset(4)
         }
         
+        integralLab.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-8)
+            make.bottom.equalTo(progressBar.snp.top).offset(-5)
+        }
+        
+        rankView.snp.makeConstraints { make in
+            make.bottom.equalTo(integralLab.snp.bottom)
+            make.left.equalToSuperview().offset(8)
+        }
+        
         progressBar.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-8)
             make.centerX.equalToSuperview()
@@ -55,18 +71,36 @@ class ScoreUpgradeEffectViewController: UIViewController {
             make.height.equalTo(12)
         }
         
-        beginProgressButton.snp.makeConstraints { make in
+        // Button
+        
+        startProgressButton.snp.makeConstraints { make in
             make.top.equalTo(upgradeView.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
-            make.width.equalTo(120)
-            make.height.equalTo(30)
         }
         
         stopProgressButton.snp.makeConstraints { make in
-            make.top.equalTo(beginProgressButton.snp.bottom).offset(10)
+            make.top.equalTo(startProgressButton.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
-            make.width.equalTo(120)
-            make.height.equalTo(30)
+        }
+        
+        startTitleUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(stopProgressButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        stopTitleUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(startTitleUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        startIntegralUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(stopTitleUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        stopIntegralUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(startIntegralUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -85,11 +119,10 @@ class ScoreUpgradeEffectViewController: UIViewController {
         bar.floorColor = UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 229.0/255.0, alpha: 0.3)
         bar.barColor = UIColor(red: 155.0/255.0, green: 223.0/255.0, blue: 255.0/255.0, alpha: 1)
         bar.progress = 0.2
-        print("set progress")
         return bar
     }()
     
-    private lazy var beginProgressButton: UIButton = {
+    private lazy var startProgressButton: UIButton = {
         let btn = UIButton()
         btn.tag = 0
         btn.setTitle("开始进度条", for: .normal)
@@ -107,10 +140,10 @@ class ScoreUpgradeEffectViewController: UIViewController {
         return btn
     }()
     
-    // MARK: text animation
+    // MARK: title
     
-    private lazy var titleLab: UILabel = {
-        let lab = UILabel()
+    private lazy var titleLab: ScoreLabel = {
+        let lab = ScoreLabel()
         lab.text = "Music Lover"
         lab.textColor = .white
         lab.textAlignment = .center
@@ -118,36 +151,92 @@ class ScoreUpgradeEffectViewController: UIViewController {
         return lab
     }()
     
-    private lazy var titleLabButton: UIButton = {
+    private lazy var startTitleUpgradeButton: UIButton = {
         let btn = UIButton()
         btn.tag = 2
-        btn.setTitle("段位名称升级动画", for: .normal)
+        btn.setTitle("开始称号动画", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
         return btn
     }()
     
+    private lazy var stopTitleUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 3
+        btn.setTitle("停止称号动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    // MARK: integral
+    
+    private lazy var integralLab: ScoreLabel = {
+        let lab = ScoreLabel()
+        lab.text = "500"
+        lab.textColor = .white
+        lab.textAlignment = .center
+        lab.font = .boldSystemFont(ofSize: 16)
+        return lab
+    }()
+    
+    private lazy var startIntegralUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 4
+        btn.setTitle("开始积分动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var stopIntegralUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 5
+        btn.setTitle("停止积分动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    // MARK: rank
+    
+    private lazy var rankView: AchievementIconView = {
+        let view = AchievementIconView()
+        view.rank = 1
+        view.level = 1
+        view.star = 4
+        return view
+    }()
+    
     // MARK: - Action
     private var progressGroup = [0.5, 0.8, 0.9, 0.2]
     private var currentIndex = 0
+    private var levelTitle = "Music Lover"
     @objc private func onTapButton(_ sender: UIButton) {
         switch sender.tag {
         case 0:
             let progress = progressGroup[currentIndex]
             currentIndex = (currentIndex + 1) % progressGroup.count
-            progressBar.startAnimation(to: progress, duration: 5)
+            progressBar.startAnimation(to: progress, duration: 2)
         case 1:
             progressBar.stopAnimation()
         case 2:
+            if levelTitle == "Music Lover" {
+                levelTitle = "Novice Singer"
+            } else {
+                levelTitle = "Music Lover"
+            }
+            titleLab.startUpgradeAnimation(to: levelTitle, in: 2)
+        case 3:
+            titleLab.stopUpgradeAnimation()
+        case 4:
+            integralLab.startIntegralAnimation(from: 20, to: 500, duration: 2)
+            break
+        case 5:
+            integralLab.stopIntegralAnimation()
             break
         default:
             break
         }
-    }
-}
-
-extension UIView {
-    func startUpgradeAnimation() {
-        
     }
 }

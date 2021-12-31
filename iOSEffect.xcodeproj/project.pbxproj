@@ -22,6 +22,8 @@
 		1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E191277DAFB90082EDD7 /* UserHomePageTagView.swift */; };
 		1827E19C277DAFB90082EDD7 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E192277DAFB90082EDD7 /* WaveView.swift */; };
 		1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */; };
+		1827E19F277DDACF0082EDD7 /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */; };
+		1827E1A1277EA5F00082EDD7 /* AchievementIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E1A0277EA5F00082EDD7 /* AchievementIconView.swift */; };
 		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		1827E191277DAFB90082EDD7 /* UserHomePageTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHomePageTagView.swift; sourceTree = "<group>"; };
 		1827E192277DAFB90082EDD7 /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankAvatarTagView.swift; sourceTree = "<group>"; };
+		1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLabel.swift; sourceTree = "<group>"; };
+		1827E1A0277EA5F00082EDD7 /* AchievementIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementIconView.swift; sourceTree = "<group>"; };
 		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C160E135BD16E0D85702D707 /* Pods-iOSEffect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEffect.release.xcconfig"; path = "Target Support Files/Pods-iOSEffect/Pods-iOSEffect.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +121,8 @@
 			children = (
 				1827E187277DAFB90082EDD7 /* Example */,
 				1827E189277DAFB90082EDD7 /* ProgressBar.swift */,
+				1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */,
+				1827E1A0277EA5F00082EDD7 /* AchievementIconView.swift */,
 			);
 			path = ScoreUpgradeEffect;
 			sourceTree = "<group>";
@@ -302,6 +308,8 @@
 				1827E173277DAE360082EDD7 /* ViewController.swift in Sources */,
 				1827E19A277DAFB90082EDD7 /* WaveEffectViewController.swift in Sources */,
 				1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */,
+				1827E1A1277EA5F00082EDD7 /* AchievementIconView.swift in Sources */,
+				1827E19F277DDACF0082EDD7 /* ScoreLabel.swift in Sources */,
 				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
 				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
 				1827E195277DAFB90082EDD7 /* RippleView.swift in Sources */,
