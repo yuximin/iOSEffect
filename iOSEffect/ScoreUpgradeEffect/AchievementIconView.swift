@@ -8,6 +8,11 @@
 import UIKit
 
 class AchievementIconView: UIView {
+    
+    var isAnimating: Bool {
+        isRankAnimating || isLevelAnimating || starView.isAnimating
+    }
+    
     var rank: Int = 1 {
         didSet {
             let imageName = "achievement_level_small_\(rank)"
@@ -27,6 +32,9 @@ class AchievementIconView: UIView {
             starView.starNum = star
         }
     }
+    
+    private var isRankAnimating: Bool = false
+    private var isLevelAnimating: Bool = false
     
     private var timer: DispatchSourceTimer?
     
@@ -109,8 +117,36 @@ class AchievementIconView: UIView {
     
     // MARK: - animation
     
+    func startAnimation(from originInfo: OLGameUserRankModel, to targetInfo: OLGameUserRankModel, duration: CFTimeInterval) {
+        targetRank = targetInfo.rank
+        targetLevel = targetInfo.level
+        targetStar = targetInfo.star
+        
+        if originInfo.rank < targetInfo.rank {
+            startRankUpgradeAnimation(to: targetInfo.rank, duration: 2)
+        } else if originInfo.level < targetInfo.level {
+            startLevelUpgradeAnimation(to: targetInfo.level, duration: 2)
+            startStarUpgradeAnimation(to: targetInfo.star, duration: 2)
+        } else if originInfo.star < targetInfo.star {
+            startStarUpgradeAnimation(to: targetInfo.star, duration: 2)
+        }
+    }
+    
+    func stopAnimation() {
+        guard isAnimating else { return }
+        
+        stopRankUpgradeAnimation()
+        stopLevelUpgradeAnimation()
+        stopStarUpgradeAnimation()
+        
+        rank = targetRank
+        level = targetLevel
+        star = targetStar
+    }
+    
     /// 段位提升动画
-    func startRankUpgradeAnimation(to rank: Int, duration: CFTimeInterval) {
+    private func startRankUpgradeAnimation(to rank: Int, duration: CFTimeInterval) {
+        isRankAnimating = true
         targetRank = rank
         self.cancelTimer()
         
@@ -120,23 +156,34 @@ class AchievementIconView: UIView {
         timer.schedule(deadline: .now() + duration * 0.5)
         timer.setEventHandler { [weak self] in
             guard let self = self else { return }
-            self.cancelTimer()
-            DispatchQueue.main.async {
-                self.rank = rank
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.rank = self.targetRank
+                self.level = self.targetLevel
+                self.star = self.targetStar
             }
         }
         timer.resume()
         self.timer = timer
     }
     
-    func stopRankUpgradeAnimation() {
+    private func stopRankUpgradeAnimation() {
+        if !isRankAnimating {
+            return
+        }
+        isRankAnimating = false
+        
         self.cancelTimer()
-        self.layer.removeAnimation(forKey: RankAnimationKey)
-        self.rank = targetRank
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.layer.removeAnimation(forKey: self.RankAnimationKey)
+            self.rank = self.targetRank
+        }
     }
     
     /// 等级提升动画
-    func startLevelUpgradeAnimation(to level: Int, duration: CFTimeInterval) {
+    private func startLevelUpgradeAnimation(to level: Int, duration: CFTimeInterval) {
+        isLevelAnimating = true
         targetLevel = level
         self.cancelTimer()
         
@@ -146,27 +193,35 @@ class AchievementIconView: UIView {
         timer.schedule(deadline: .now() + duration * 0.5)
         timer.setEventHandler { [weak self] in
             guard let self = self else { return }
-            self.cancelTimer()
-            DispatchQueue.main.async {
-                self.level = level
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else { return }
+                self.level = self.targetLevel
             }
         }
         timer.resume()
         self.timer = timer
     }
     
-    func stopLevelUpgradeAnimation() {
+    private func stopLevelUpgradeAnimation() {
+        if !isLevelAnimating {
+            return
+        }
+        isLevelAnimating = false
+        
         self.cancelTimer()
-        levelIcon.layer.removeAnimation(forKey: LevelAnimationKey)
-        self.level = targetLevel
+        DispatchQueue.main.async {[weak self] in
+            guard let self = self else { return }
+            self.level = self.targetLevel
+            self.levelIcon.layer.removeAnimation(forKey: self.LevelAnimationKey)
+        }
     }
     
     /// 星级提升动画
-    func startStarUpgradeAnimation(to star: Int, duration: CFTimeInterval) {
+    private func startStarUpgradeAnimation(to star: Int, duration: CFTimeInterval) {
         starView.startAnimation(to: star, duration: duration)
     }
     
-    func stopStarUpgradeAnimation() {
+    private func stopStarUpgradeAnimation() {
         starView.stopStarAnimation()
     }
     
@@ -180,6 +235,7 @@ class AchievementIconView: UIView {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, opacityAnimation]
         animationGroup.duration = duration
+        animationGroup.setValue(1, forKey: "Tag")
         return animationGroup
     }
     
@@ -193,11 +249,26 @@ class AchievementIconView: UIView {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, opacityAnimation]
         animationGroup.duration = duration
+        animationGroup.setValue(2, forKey: "Tag")
         return animationGroup
     }
     
     private func cancelTimer() {
         self.timer?.cancel()
         self.timer = nil
+    }
+}
+
+extension AchievementIconView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        guard flag, let tag = anim.value(forKey: "Tag") as? Int else {
+            return
+        }
+        
+        if tag == 1 {
+            isRankAnimating = false
+        } else if tag == 2 {
+            isLevelAnimating = false
+        }
     }
 }

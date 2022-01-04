@@ -9,6 +9,8 @@ import UIKit
 
 class ScoreLabel: UILabel {
     
+    var isAnimating: Bool = false
+    
     private let UpgradeAnimationKey = "UpgradeAnimation"
     private var targetText: String = ""
     private var tempIntegral: Int = 0
@@ -17,7 +19,8 @@ class ScoreLabel: UILabel {
     
     // MARK: 段位提升动画
     
-    func startUpgradeAnimation(to title: String, in duration: CFTimeInterval) {
+    func startUpgradeAnimation(to title: String, duration: CFTimeInterval) {
+        isAnimating = true
         targetText = title
         self.cancelTimer()
         
@@ -28,7 +31,8 @@ class ScoreLabel: UILabel {
         timer.setEventHandler { [weak self] in
             guard let self = self else { return }
             self.cancelTimer()
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.text = self.targetText
             }
         }
@@ -37,14 +41,24 @@ class ScoreLabel: UILabel {
     }
     
     func stopUpgradeAnimation() {
+        if !isAnimating {
+            return
+        }
+        isAnimating = false
+        
         self.cancelTimer()
-        self.text = targetText
-        layer.removeAnimation(forKey: UpgradeAnimationKey)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.text = self.targetText
+            self.layer.removeAnimation(forKey: self.UpgradeAnimationKey)
+        }
     }
     
     // MARK: 积分动画(数字)
     
     func startIntegralAnimation(from initialValue: Int, to targetValue: Int, duration: Double) {
+        isAnimating = true
         targetText = String(targetValue)
         self.cancelTimer()
         
@@ -56,14 +70,21 @@ class ScoreLabel: UILabel {
         timer.setEventHandler { [weak self] in
             guard let self = self else { return }
             
+            if self.timer == nil {
+                return
+            }
+            
             tempIntegral += 1
             if tempIntegral > targetValue {
                 self.cancelTimer()
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
                     self.text = self.targetText
+                    self.isAnimating = false
                 }
             } else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
                     self.text = String(tempIntegral)
                 }
             }
@@ -73,8 +94,16 @@ class ScoreLabel: UILabel {
     }
     
     func stopIntegralAnimation() {
+        if !isAnimating {
+            return
+        }
+        isAnimating = false
+        
         self.cancelTimer()
-        self.text = targetText
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.text = self.targetText
+        }
     }
     
     // MARK: private
@@ -94,6 +123,15 @@ class ScoreLabel: UILabel {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, opacityAnimation]
         animationGroup.duration = duration
+        animationGroup.delegate = self
         return animationGroup
+    }
+}
+
+extension ScoreLabel: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag {
+            isAnimating = false
+        }
     }
 }

@@ -11,6 +11,8 @@ class ProgressBar: UIView {
     
     private let ProgressAnimationKey = "ProgressAnimation"
     
+    var isAnimating: Bool = false
+    
     var floorColor: UIColor = .white {
         didSet {
             backgroundColor = floorColor
@@ -67,10 +69,16 @@ class ProgressBar: UIView {
     // MARK: - public
     
     func startAnimation(to ratio: CGFloat, duration: CGFloat) {
+        isAnimating = true
         barView.layer.add(progressAnimation(ratio, duration: duration), forKey: ProgressAnimationKey)
     }
     
     func stopAnimation() {
+        if !isAnimating {
+            return
+        }
+        isAnimating = false
+        
         barView.layer.removeAnimation(forKey: ProgressAnimationKey)
     }
     
@@ -107,6 +115,10 @@ class ProgressBar: UIView {
 
 extension ProgressBar: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag {
+            isAnimating = false
+        }
+        
         if let ratio = anim.value(forKey: "ratio") as? CGFloat {
             progress = ratio
         }

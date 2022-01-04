@@ -9,6 +9,8 @@ import UIKit
 
 class StarView: UIView {
     
+    var isAnimating: Bool = false
+    
     var starNum: Int = 0 {
         didSet {
             if starNum > 3 {
@@ -27,9 +29,9 @@ class StarView: UIView {
     }
     
     private let StarAnimationKey = "StarAnimation"
-    private let StarLowViewAnimationKey = "StarLowViewAnimation"
-    private let StarHighViewAnimationKey = "StarHighViewAnimation"
     private var targetStar: Int = 0
+    
+    private var timer: DispatchSourceTimer?
     
     // MARK: - init
     
@@ -211,57 +213,80 @@ class StarView: UIView {
     // MARK: - Animation
     
     func startAnimation(to index: Int, duration: CFTimeInterval) {
+        stopStarAnimation()
+        isAnimating = true
         targetStar = index
         
         if index <= starNum {
             return
         }
         
-        startSingleAnimation(to: starNum + 1, duration: duration)
-    }
-    
-    private func startSingleAnimation(to index: Int, duration: CFTimeInterval) {
-        if index <= 3 {
-            starNum = index
-            let star = starContainer[index - 1]
-            star.layer.add(starAnimation(to: index, duration: duration), forKey: StarAnimationKey)
-        } else if index == 4 {
-            starLowView.layer.add(starLowViewAnimation(duration: duration), forKey: StarAnimationKey)
+        self.cancelTimer()
+        
+        if starNum > 3 {
+            // 高星级试图切换
+            starHighView.layer.add(hideAnimation(tag: 0, duration: duration * 0.5), forKey: StarAnimationKey)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+            timer.schedule(deadline: .now() + duration * 0.5)
+            timer.setEventHandler { [weak self] in
                 guard let self = self else { return }
-                self.starNum = index
-                self.starHighView.layer.add(self.starHightViewAnimation(duration: duration), forKey: self.StarHighViewAnimationKey)
+                self.cancelTimer()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.starNum = self.targetStar
+                    self.starHighView.layer.add(self.showAnimation(tag: 1, duration: duration), forKey: self.StarAnimationKey)
+                }
             }
+            timer.resume()
+            self.timer = timer
+        } else if index > 3 {
+            // 低星级到高星级
+            starLowView.layer.add(hideAnimation(tag: 0, duration: duration), forKey: StarAnimationKey)
+            
+            let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+            timer.schedule(deadline: .now() + duration * 0.5)
+            timer.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                self.cancelTimer()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.starNum = self.targetStar
+                    self.starHighView.layer.add(self.showAnimation(tag: 1, duration: duration), forKey: self.StarAnimationKey)
+                }
+            }
+            timer.resume()
+            self.timer = timer
         } else {
+            // 低星级升级
+            let currentNum = starNum
             starNum = index
+            for i in currentNum..<index {
+                let star = starContainer[i]
+                star.layer.add(showAnimation(tag: 1, duration: duration), forKey: StarAnimationKey)
+            }
         }
     }
     
     func stopStarAnimation() {
-        self.starNum = targetStar
+        if !isAnimating {
+            return
+        }
+        isAnimating = false
         
         star0.layer.removeAnimation(forKey: StarAnimationKey)
         star1.layer.removeAnimation(forKey: StarAnimationKey)
         star2.layer.removeAnimation(forKey: StarAnimationKey)
-        starLowView.layer.removeAnimation(forKey: StarLowViewAnimationKey)
-        starHighView.layer.removeAnimation(forKey: StarHighViewAnimationKey)
+        starLowView.layer.removeAnimation(forKey: StarAnimationKey)
+        starHighView.layer.removeAnimation(forKey: StarAnimationKey)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.starNum = self.targetStar
+        }
     }
     
-    private func starAnimation(to index: Int, duration: CFTimeInterval) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.fromValue = 0
-        animation.toValue = 1
-        animation.duration = duration
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = .forwards
-        animation.setValue(index, forKey: "Index")
-        animation.setValue(duration, forKey: "Duration")
-        animation.delegate = self
-        return animation
-    }
-    
-    private func starLowViewAnimation(duration: CFTimeInterval) -> CAAnimationGroup {
+    private func hideAnimation(tag: Int, duration: CFTimeInterval) -> CAAnimationGroup {
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = 1
         scaleAnimation.toValue = 0
@@ -275,10 +300,11 @@ class StarView: UIView {
         animationGroup.duration = duration
         animationGroup.isRemovedOnCompletion = false
         animationGroup.fillMode = .forwards
+        animationGroup.setValue(tag, forKey: "Tag")
         return animationGroup
     }
     
-    private func starHightViewAnimation(duration: CFTimeInterval) -> CAAnimationGroup {
+    private func showAnimation(tag: Int, duration: CFTimeInterval) -> CAAnimationGroup {
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = 0
         scaleAnimation.toValue = 1
@@ -290,15 +316,24 @@ class StarView: UIView {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, opacityAnimation]
         animationGroup.duration = duration
+        animationGroup.isRemovedOnCompletion = false
+        animationGroup.fillMode = .forwards
+        animationGroup.setValue(tag, forKey: "Tag")
         return animationGroup
+    }
+    
+    private func cancelTimer() {
+        self.timer?.cancel()
+        self.timer = nil
     }
 }
 
 extension StarView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag,
-           let index = anim.value(forKey: "Index") as? Int {
-            startSingleAnimation(to: index + 1, duration: anim.duration)
+           let tag = anim.value(forKey: "Tag") as? Int,
+           tag == 1 {
+           isAnimating = false
         }
     }
 }
