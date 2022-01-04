@@ -38,6 +38,12 @@ class ScoreUpgradeEffectViewController: UIViewController {
         view.addSubview(stopTitleUpgradeButton)
         view.addSubview(startIntegralUpgradeButton)
         view.addSubview(stopIntegralUpgradeButton)
+        view.addSubview(startRankUpgradeButton)
+        view.addSubview(stopRankUpgradeButton)
+        view.addSubview(startLevelUpgradeButton)
+        view.addSubview(stopLevelUpgradeButton)
+        view.addSubview(startStarUpgradeButton)
+        view.addSubview(stopStarUpgradeButton)
     }
     
     private func setupConstraints() {
@@ -100,6 +106,36 @@ class ScoreUpgradeEffectViewController: UIViewController {
         
         stopIntegralUpgradeButton.snp.makeConstraints { make in
             make.top.equalTo(startIntegralUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        startRankUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(stopIntegralUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        stopRankUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(startRankUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        startLevelUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(stopRankUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        stopLevelUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(startLevelUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        startStarUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(stopLevelUpgradeButton.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        stopStarUpgradeButton.snp.makeConstraints { make in
+            make.top.equalTo(startStarUpgradeButton.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
     }
@@ -204,8 +240,62 @@ class ScoreUpgradeEffectViewController: UIViewController {
         let view = AchievementIconView()
         view.rank = 1
         view.level = 1
-        view.star = 4
+        view.star = 0
         return view
+    }()
+    
+    private lazy var startRankUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 6
+        btn.setTitle("开始段位升级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var stopRankUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 7
+        btn.setTitle("停止段位升级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var startLevelUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 8
+        btn.setTitle("开始等级升级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var stopLevelUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 9
+        btn.setTitle("停止等级升级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var startStarUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 10
+        btn.setTitle("开始星级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var stopStarUpgradeButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = 11
+        btn.setTitle("停止星级动画", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.addTarget(self, action: #selector(onTapButton(_:)), for: .touchUpInside)
+        return btn
     }()
     
     // MARK: - Action
@@ -231,10 +321,20 @@ class ScoreUpgradeEffectViewController: UIViewController {
             titleLab.stopUpgradeAnimation()
         case 4:
             integralLab.startIntegralAnimation(from: 20, to: 500, duration: 2)
-            break
         case 5:
             integralLab.stopIntegralAnimation()
-            break
+        case 6:
+            rankView.startRankUpgradeAnimation(to: 3, duration: 2)
+        case 7:
+            rankView.stopRankUpgradeAnimation()
+        case 8:
+            rankView.startLevelUpgradeAnimation(to: 4, duration: 2)
+        case 9:
+            rankView.stopLevelUpgradeAnimation()
+        case 10:
+            rankView.startStarUpgradeAnimation(to: 3, duration: 2)
+        case 11:
+            rankView.stopStarUpgradeAnimation()
         default:
             break
         }

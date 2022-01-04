@@ -10,13 +10,15 @@ import UIKit
 class AchievementIconView: UIView {
     var rank: Int = 1 {
         didSet {
-            rankImage = UIImage(named: "achievement_level_small_1") ?? UIImage()
+            let imageName = "achievement_level_small_\(rank)"
+            rankImage = UIImage(named: imageName) ?? UIImage()
         }
     }
     
     var level: Int = 1 {
         didSet {
-            levelImage = UIImage(named: "achievement_level_passage_1") ?? UIImage()
+            let imageName = "achievement_level_passage_\(level)"
+            levelImage = UIImage(named: imageName) ?? UIImage()
         }
     }
     
@@ -25,6 +27,16 @@ class AchievementIconView: UIView {
             starView.starNum = star
         }
     }
+    
+    private var timer: DispatchSourceTimer?
+    
+    private var targetRank: Int = 0
+    private var targetLevel: Int = 0
+    private var targetStar: Int = 0
+    
+    private let RankAnimationKey = "RankAnimation"
+    private let LevelAnimationKey = "LevelAnimation"
+    private let StarAnimationKey = "StarAnimation"
     
     private var rankImage: UIImage = UIImage() {
         didSet {
@@ -65,7 +77,7 @@ class AchievementIconView: UIView {
         levelIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(rankIcon)
-            make.height.equalTo(10)
+            make.height.equalTo(8)
         }
         
         starView.snp.makeConstraints { make in
@@ -99,164 +111,93 @@ class AchievementIconView: UIView {
     
     /// 段位提升动画
     func startRankUpgradeAnimation(to rank: Int, duration: CFTimeInterval) {
+        targetRank = rank
+        self.cancelTimer()
         
+        layer.add(rankAnimation(duration: duration), forKey: RankAnimationKey)
+        
+        let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+        timer.schedule(deadline: .now() + duration * 0.5)
+        timer.setEventHandler { [weak self] in
+            guard let self = self else { return }
+            self.cancelTimer()
+            DispatchQueue.main.async {
+                self.rank = rank
+            }
+        }
+        timer.resume()
+        self.timer = timer
+    }
+    
+    func stopRankUpgradeAnimation() {
+        self.cancelTimer()
+        self.layer.removeAnimation(forKey: RankAnimationKey)
+        self.rank = targetRank
     }
     
     /// 等级提升动画
     func startLevelUpgradeAnimation(to level: Int, duration: CFTimeInterval) {
+        targetLevel = level
+        self.cancelTimer()
         
+        levelIcon.layer.add(levelAnimation(duration: duration), forKey: LevelAnimationKey)
+        
+        let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+        timer.schedule(deadline: .now() + duration * 0.5)
+        timer.setEventHandler { [weak self] in
+            guard let self = self else { return }
+            self.cancelTimer()
+            DispatchQueue.main.async {
+                self.level = level
+            }
+        }
+        timer.resume()
+        self.timer = timer
+    }
+    
+    func stopLevelUpgradeAnimation() {
+        self.cancelTimer()
+        levelIcon.layer.removeAnimation(forKey: LevelAnimationKey)
+        self.level = targetLevel
     }
     
     /// 星级提升动画
     func startStarUpgradeAnimation(to star: Int, duration: CFTimeInterval) {
-        
-    }
-}
-
-class StarView: UIView {
-    
-    var starNum: Int = 0 {
-        didSet {
-            if starNum > 3 {
-                starLowView.isHidden = true
-                starHighView.isHidden = false
-                starLab.text = "x\(starNum)"
-            } else {
-                starLowView.isHidden = false
-                starHighView.isHidden = true
-            }
-        }
+        starView.startAnimation(to: star, duration: duration)
     }
     
-    // MARK: - init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setupUI()
+    func stopStarUpgradeAnimation() {
+        starView.stopStarAnimation()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func rankAnimation(duration: CFTimeInterval) -> CAAnimationGroup {
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        scaleAnimation.values = [1, 0, 1]
+        
+        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        opacityAnimation.values = [1, 0, 1]
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [scaleAnimation, opacityAnimation]
+        animationGroup.duration = duration
+        return animationGroup
     }
     
-    // MARK: - UI
-    
-    private func setupUI() {
-        addSubview(starBg)
-        addSubview(starLowView)
-        starLowView.addSubview(star0)
-        starLowView.addSubview(star1)
-        starLowView.addSubview(star2)
+    private func levelAnimation(duration: CFTimeInterval) -> CAAnimationGroup {
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        scaleAnimation.values = [1, 0, 1]
         
-        addSubview(starHighView)
-        starHighView.addSubview(starHigh)
-        starHighView.addSubview(starLab)
-
-        starBg.snp.makeConstraints { make in
-            make.width.equalTo(42)
-            make.height.equalTo(10)
-            make.edges.equalToSuperview()
-        }
+        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        opacityAnimation.values = [1, 0, 1]
         
-        starLowView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        star1.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(1)
-            make.width.equalTo(7.5)
-            make.height.equalTo(7)
-        }
-        
-        star0.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalTo(star1.snp.leading).offset(-3)
-            make.width.equalTo(7.5)
-            make.height.equalTo(7)
-        }
-
-        star2.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(star1.snp.trailing).offset(3)
-            make.width.equalTo(7.5)
-            make.height.equalTo(7)
-        }
-        
-        starHighView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.lessThanOrEqualToSuperview()
-            make.height.equalToSuperview()
-        }
-        
-        starHigh.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.width.equalTo(7.5)
-            make.height.equalTo(7)
-        }
-        
-        starLab.snp.makeConstraints { make in
-            make.leading.equalTo(starHigh.snp.trailing).offset(2)
-            make.trailing.bottom.equalToSuperview()
-        }
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [scaleAnimation, opacityAnimation]
+        animationGroup.duration = duration
+        return animationGroup
     }
     
-    private func createStar() -> UIImageView {
-        let star = UIImageView()
-        star.image = UIImage(named: "achievement_level_star") ?? UIImage()
-        return star
+    private func cancelTimer() {
+        self.timer?.cancel()
+        self.timer = nil
     }
-    
-    // MARK: - lazy
-    
-    /// 星级底板
-    private lazy var starBg: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "achievement_level_small_scroll") ?? UIImage()
-        return imageView
-    }()
-    
-    private lazy var starLowView: UIView = {
-        let view = UIView()
-        view.isHidden = true
-        return view
-    }()
-    
-    private lazy var star0: UIImageView = {
-        let star = createStar()
-        return star
-    }()
-    
-    private lazy var star1: UIImageView = {
-        let star = createStar()
-        return star
-    }()
-    
-    private lazy var star2: UIImageView = {
-        let star = createStar()
-        return star
-    }()
-    
-    private lazy var starHighView: UIView = {
-        let view = UIView()
-        view.isHidden = true
-        return view
-    }()
-    
-    private lazy var starHigh: UIImageView = {
-        let star = createStar()
-        return star
-    }()
-    
-    private lazy var starLab: UILabel = {
-        let lab = UILabel()
-        lab.text = ""
-        lab.textColor = .white
-        lab.font = .boldSystemFont(ofSize: 6)
-        lab.textAlignment = .center
-        return lab
-    }()
-    
 }
