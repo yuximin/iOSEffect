@@ -11,20 +11,13 @@ class ScoreUpgradeEffectViewController: UIViewController {
     
     lazy var titles: [String] = {
         return [
-            "开始动画",
-            "停止动画",
-            "开始进度条动画",
-            "停止进度条动画",
-            "开始称号动画",
-            "停止称号动画",
-            "开始积分动画",
-            "停止积分动画",
-            "开始段位升级动画",
-            "停止段位升级动画",
-            "开始等级升级动画",
-            "停止等级升级动画",
-            "开始星级升级动画",
-            "停止星级升级动画"
+            "积分动画",
+            "升星动画低",
+            "升星动画低到高",
+            "升星动画高",
+            "升级动画",
+            "升段动画",
+            "停止动画"
         ]
     }()
     
@@ -41,7 +34,7 @@ class ScoreUpgradeEffectViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 40, rankNumber: 200, rank: 2, level: 3, star: 8, startIntegral: 40, maxIntegral: 200)
+        gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 40, rankNumber: 111, rank: 1, level: 1, star: 1, startIntegral: 40, maxIntegral: 200)
     }
     
     // MARK: - UI
@@ -106,40 +99,31 @@ extension ScoreUpgradeEffectViewController: UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         switch row {
         case 0:
-            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 120, rankNumber: 400, rank: 3, level: 1, star: 2, startIntegral: 40, maxIntegral: 400))
+            gradeView.stopAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 40, rankNumber: 111, rank: 1, level: 1, star: 1, startIntegral: 40, maxIntegral: 200)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 80, rankNumber: 111, rank: 1, level: 1, star: 1, startIntegral: 40, maxIntegral: 200))
         case 1:
             gradeView.stopAnimation()
-//        case 2:
-//            let progress = progressGroup[currentIndex]
-//            currentIndex = (currentIndex + 1) % progressGroup.count
-//            progressBar.startAnimation(to: progress, duration: 2)
-//        case 3:
-//            progressBar.stopAnimation()
-//        case 4:
-//            if levelTitle == "Music Lover" {
-//                levelTitle = "Novice Singer"
-//            } else {
-//                levelTitle = "Music Lover"
-//            }
-//            titleLab.startUpgradeAnimation(to: levelTitle, in: 2)
-//        case 5:
-//            titleLab.stopUpgradeAnimation()
-//        case 6:
-//            integralLab.startIntegralAnimation(from: 20, to: 500, duration: 2)
-//        case 7:
-//            integralLab.stopIntegralAnimation()
-//        case 8:
-//            rankView.startRankUpgradeAnimation(to: 3, duration: 2)
-//        case 9:
-//            rankView.stopRankUpgradeAnimation()
-//        case 10:
-//            rankView.startLevelUpgradeAnimation(to: 4, duration: 2)
-//        case 11:
-//            rankView.stopLevelUpgradeAnimation()
-//        case 12:
-//            rankView.startStarUpgradeAnimation(to: 2, duration: 2)
-//        case 13:
-//            rankView.stopStarUpgradeAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 40, rankNumber: 111, rank: 1, level: 1, star: 1, startIntegral: 40, maxIntegral: 200)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 220, rankNumber: 112, rank: 1, level: 1, star: 2, startIntegral: 40, maxIntegral: 400))
+        case 2:
+            gradeView.stopAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 520, rankNumber: 113, rank: 1, level: 1, star: 3, startIntegral: 520, maxIntegral: 600)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 630, rankNumber: 114, rank: 1, level: 1, star: 4, startIntegral: 520, maxIntegral: 800))
+        case 3:
+            gradeView.stopAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 630, rankNumber: 114, rank: 1, level: 1, star: 4, startIntegral: 630, maxIntegral: 800)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 860, rankNumber: 115, rank: 1, level: 1, star: 5, startIntegral: 630, maxIntegral: 1000))
+        case 4:
+            gradeView.stopAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 520, rankNumber: 113, rank: 1, level: 1, star: 3, startIntegral: 520, maxIntegral: 600)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 630, rankNumber: 121, rank: 1, level: 2, star: 1, startIntegral: 520, maxIntegral: 800))
+        case 5:
+            gradeView.stopAnimation()
+            gradeView.rankInfo = OLGameUserRankModel(isUpgrade: false, integral: 520, rankNumber: 113, rank: 1, level: 1, star: 3, startIntegral: 520, maxIntegral: 600)
+            gradeView.starAnimation(to: OLGameUserRankModel(isUpgrade: false, integral: 630, rankNumber: 211, rank: 2, level: 1, star: 1, startIntegral: 520, maxIntegral: 800))
+        case 6:
+            gradeView.stopAnimation()
         default:
             break
 
