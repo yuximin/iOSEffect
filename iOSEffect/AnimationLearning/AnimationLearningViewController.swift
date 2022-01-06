@@ -24,6 +24,10 @@ class AnimationLearningViewController: UIViewController {
         "阴影偏移",
         "阴影透明",
         "阴影圆角",
+        "z轴位置",
+        "内容",
+        "内容区域",
+        "过渡动画",
         "UIAnimation平移"
     ]
 
@@ -34,6 +38,12 @@ class AnimationLearningViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        activityIndicatorView.startAnimating()
     }
     
     // MARK: - UI
@@ -47,6 +57,9 @@ class AnimationLearningViewController: UIViewController {
     private func setupSubviews() {
         view.addSubview(animatedArea)
         animatedArea.addSubview(animatedView)
+        animatedArea.addSubview(animatedImageView)
+        animatedArea.addSubview(animatedLabel)
+        animatedArea.addSubview(activityIndicatorView)
         animatedView.addSubview(referenceView)
         view.addSubview(tableView)
     }
@@ -62,6 +75,23 @@ class AnimationLearningViewController: UIViewController {
             make.centerX.centerY.equalToSuperview()
             make.width.equalTo(40)
             make.height.equalTo(20)
+        }
+        
+        animatedImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(20)
+        }
+        
+        animatedLabel.snp.makeConstraints { make in
+            make.top.equalTo(animatedView.snp.bottom).offset(-10)
+            make.leading.equalTo(animatedView.snp.trailing).offset(-10)
+        }
+        
+        activityIndicatorView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
         }
         
         referenceView.snp.makeConstraints { make in
@@ -104,11 +134,36 @@ class AnimationLearningViewController: UIViewController {
         return view
     }()
     
+    private lazy var animatedImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "achievement_level_small_1") ?? UIImage()
+        return imageView
+    }()
+    
+    private lazy var animatedLabel: UILabel = {
+        let label = UILabel()
+        label.text = "111"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 18)
+        return label
+    }()
+    
     private lazy var referenceView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.isHidden = true
         return view
+    }()
+    
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        if #available(iOS 13.0, *) {
+            activityIndicatorView.style = .medium
+        } else {
+            activityIndicatorView.style = .white
+        }
+        activityIndicatorView.backgroundColor = .blue
+        return activityIndicatorView
     }()
     
     private lazy var tableView: UITableView = {
@@ -132,7 +187,9 @@ class AnimationLearningViewController: UIViewController {
     
     func startScaleAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.toValue = 1.5
+//        animation.fromValue = 0.5
+        animation.byValue = 0.5
+        animation.toValue = 1.2
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
@@ -142,8 +199,8 @@ class AnimationLearningViewController: UIViewController {
     }
     
     func startRotationAnimation() {
-        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-        animation.toValue = Double.pi / 4
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.toValue = CGPoint(x: Double.pi / 4, y: Double.pi / 4)
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
@@ -242,7 +299,7 @@ class AnimationLearningViewController: UIViewController {
     
     func startShadowOffsetAnimation() {
         let animation = CAKeyframeAnimation(keyPath: "shadowOffset")
-        animation.values = [CGSize(width: 43, height: 23), CGSize(width: 46, height: 26), CGSize(width: 43, height: 23)]
+        animation.values = [CGPoint(x: 43, y: 23), CGPoint(x: 50, y: 30), CGPoint(x: 43, y: 23)]
         animation.duration = 2
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
@@ -273,6 +330,51 @@ class AnimationLearningViewController: UIViewController {
         animatedView.layer.add(animation, forKey: "ShadowRadiusAnimation")
     }
     
+    func startZPositionAnimation() {
+        let animation = CABasicAnimation(keyPath: "zPosition")
+        animation.toValue = 1
+        animation.duration = 2
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        animation.delegate = self
+        
+        animatedView.layer.add(animation, forKey: "ZPositionAnimation")
+    }
+    
+    func startContentsAnimation() {
+        let targetImage = UIImage(named: "achievement_level_small_2") ?? UIImage()
+        
+        let animation = CABasicAnimation(keyPath: "contents")
+        animation.toValue = targetImage.cgImage
+        animation.duration = 2
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        animation.delegate = self
+        
+        animatedImageView.layer.add(animation, forKey: "ContentsAnimation")
+    }
+    
+    func startContentsRectAnimation() {
+        let animation = CABasicAnimation(keyPath: "contentsRect")
+        animation.toValue = CGRect(x: 0.5, y: 0.5, width: 0.5, height: 0.5)
+        animation.duration = 2
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        animation.delegate = self
+        
+        animatedImageView.layer.add(animation, forKey: "ContentsRectAnimation")
+    }
+    
+    func startTransitionAnimation() {
+        let transition = CATransition()
+        transition.type = .push
+        transition.subtype = .fromRight
+        transition.duration = 0.5
+        
+        animatedImageView.layer.add(transition, forKey: "TransitionAnimation")
+        animatedImageView.image = UIImage(named: "achievement_level_small_2") ?? UIImage()
+    }
+    
     func startTranslationUIViewAnimation() {
         animatedView.transform = CGAffineTransform.identity
         UIView.animate(withDuration: 5) {
@@ -286,6 +388,7 @@ class AnimationLearningViewController: UIViewController {
     
     func stopAnimation() {
         animatedView.layer.removeAllAnimations()
+        animatedImageView.layer.removeAllAnimations()
     }
 
 }
@@ -348,6 +451,14 @@ extension AnimationLearningViewController: UITableViewDelegate, UITableViewDataS
         case 13:
             startShadowRadiusAnimation()
         case 14:
+            startZPositionAnimation()
+        case 15:
+            startContentsAnimation()
+        case 16:
+            startContentsRectAnimation()
+        case 17:
+            startTransitionAnimation()
+        case 18:
             startTranslationUIViewAnimation()
         default:
             break
