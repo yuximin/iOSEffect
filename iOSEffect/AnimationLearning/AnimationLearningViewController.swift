@@ -28,7 +28,8 @@ class AnimationLearningViewController: UIViewController {
         "内容",
         "内容区域",
         "过渡动画",
-        "UIAnimation平移"
+        "UIViewAnimation - 平移",
+        "UIViewKeyFrameAnimation - 平移"
     ]
 
     // MARK: - lifecycle
@@ -386,6 +387,30 @@ class AnimationLearningViewController: UIViewController {
         }
     }
     
+    func startTranslationUIViewKeyFrameAnimation() {
+        animatedView.transform = CGAffineTransform.identity
+        UIView.animateKeyframes(withDuration: 4, delay: 0, options: []) {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25) {
+                self.animatedView.transform = CGAffineTransform(translationX: 100, y: 0)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {
+                self.animatedView.transform = CGAffineTransform(translationX: 100, y: 100)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25) {
+                self.animatedView.transform = CGAffineTransform(translationX: 0, y: 100)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25) {
+                self.animatedView.transform = CGAffineTransform.identity
+            }
+        } completion: { flag in
+            print("startTranslationUIViewKeyFrameAnimation completed: \(flag)")
+        }
+
+    }
+    
     func stopAnimation() {
         animatedView.layer.removeAllAnimations()
         animatedImageView.layer.removeAllAnimations()
@@ -460,6 +485,8 @@ extension AnimationLearningViewController: UITableViewDelegate, UITableViewDataS
             startTransitionAnimation()
         case 18:
             startTranslationUIViewAnimation()
+        case 19:
+            startTranslationUIViewKeyFrameAnimation()
         default:
             break
         }
