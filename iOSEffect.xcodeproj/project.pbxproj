@@ -25,6 +25,9 @@
 		1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */; };
 		1827E19F277DDACF0082EDD7 /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */; };
 		1827E1A1277EA5F00082EDD7 /* AchievementIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E1A0277EA5F00082EDD7 /* AchievementIconView.swift */; };
+		18737D152787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D142787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift */; };
+		18737D182787248300E2C1C9 /* NewGradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D172787248300E2C1C9 /* NewGradeView.swift */; };
+		18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D1A27882BB400E2C1C9 /* TimerAnimationViewController.swift */; };
 		18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */; };
 		18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6995C2783FBBC00DBB67F /* GradeView.swift */; };
 		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
@@ -52,6 +55,9 @@
 		1827E193277DAFB90082EDD7 /* RankAvatarTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankAvatarTagView.swift; sourceTree = "<group>"; };
 		1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLabel.swift; sourceTree = "<group>"; };
 		1827E1A0277EA5F00082EDD7 /* AchievementIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementIconView.swift; sourceTree = "<group>"; };
+		18737D142787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScoreUpgradeEffectVC.swift; sourceTree = "<group>"; };
+		18737D172787248300E2C1C9 /* NewGradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGradeView.swift; sourceTree = "<group>"; };
+		18737D1A27882BB400E2C1C9 /* TimerAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationViewController.swift; sourceTree = "<group>"; };
 		18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLearningViewController.swift; sourceTree = "<group>"; };
 		18B6995C2783FBBC00DBB67F /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +97,7 @@
 		1827E16D277DAE360082EDD7 /* iOSEffect */ = {
 			isa = PBXGroup;
 			children = (
+				18737D1927882B9000E2C1C9 /* TimerAnimation */,
 				18AA77CE2785436200D36B15 /* AnimationLearning */,
 				1827E18A277DAFB90082EDD7 /* LightAroundEffect */,
 				1827E182277DAFB80082EDD7 /* RippleEffect */,
@@ -126,6 +133,7 @@
 		1827E186277DAFB90082EDD7 /* ScoreUpgradeEffect */ = {
 			isa = PBXGroup;
 			children = (
+				18737D13278722F200E2C1C9 /* Recoding */,
 				1827E187277DAFB90082EDD7 /* Example */,
 				1827E189277DAFB90082EDD7 /* ProgressBar.swift */,
 				1827E19E277DDACF0082EDD7 /* ScoreLabel.swift */,
@@ -178,6 +186,31 @@
 				1827E190277DAFB90082EDD7 /* WaveEffectViewController.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		18737D13278722F200E2C1C9 /* Recoding */ = {
+			isa = PBXGroup;
+			children = (
+				18737D162787236400E2C1C9 /* Views */,
+				18737D142787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift */,
+			);
+			path = Recoding;
+			sourceTree = "<group>";
+		};
+		18737D162787236400E2C1C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18737D172787248300E2C1C9 /* NewGradeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18737D1927882B9000E2C1C9 /* TimerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				18737D1A27882BB400E2C1C9 /* TimerAnimationViewController.swift */,
+			);
+			path = TimerAnimation;
 			sourceTree = "<group>";
 		};
 		18AA77CE2785436200D36B15 /* AnimationLearning */ = {
@@ -320,10 +353,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18737D152787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift in Sources */,
 				1827E19C277DAFB90082EDD7 /* WaveView.swift in Sources */,
 				1827E196277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift in Sources */,
 				1827E173277DAE360082EDD7 /* ViewController.swift in Sources */,
 				18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */,
+				18737D182787248300E2C1C9 /* NewGradeView.swift in Sources */,
 				03C755D52783265A005E84CF /* StarView.swift in Sources */,
 				1827E19A277DAFB90082EDD7 /* WaveEffectViewController.swift in Sources */,
 				1827E19D277DAFB90082EDD7 /* RankAvatarTagView.swift in Sources */,
@@ -331,6 +366,7 @@
 				1827E19F277DDACF0082EDD7 /* ScoreLabel.swift in Sources */,
 				18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */,
 				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
+				18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */,
 				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
 				1827E195277DAFB90082EDD7 /* RippleView.swift in Sources */,
 				1827E197277DAFB90082EDD7 /* ProgressBar.swift in Sources */,

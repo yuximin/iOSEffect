@@ -152,19 +152,28 @@ class AchievementIconView: UIView {
         
         layer.add(rankAnimation(duration: duration), forKey: RankAnimationKey)
         
-        let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
-        timer.schedule(deadline: .now() + duration * 0.5)
-        timer.setEventHandler { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.rank = self.targetRank
-                self.level = self.targetLevel
-                self.star = self.targetStar
-            }
-        }
-        timer.resume()
-        self.timer = timer
+        let imageName = "achievement_level_small_\(targetRank)"
+        let image = UIImage(named: imageName) ?? UIImage()
+        let contentsAnimation = CABasicAnimation(keyPath: "contents")
+        contentsAnimation.toValue = image.cgImage
+        contentsAnimation.duration = duration
+        contentsAnimation.fillMode = .forwards
+        contentsAnimation.isRemovedOnCompletion = false
+        rankIcon.layer.add(contentsAnimation, forKey: RankAnimationKey)
+        
+//        let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+//        timer.schedule(deadline: .now() + duration * 0.5)
+//        timer.setEventHandler { [weak self] in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                self.rank = self.targetRank
+//                self.level = self.targetLevel
+//                self.star = self.targetStar
+//            }
+//        }
+//        timer.resume()
+//        self.timer = timer
     }
     
     private func stopRankUpgradeAnimation() {

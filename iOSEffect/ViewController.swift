@@ -11,7 +11,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let titles: [String] = ["按钮呼吸动效", "波纹扩散动效", "光环围绕动效", "积分栏动效", "动画学习"]
+    private let titles: [String] = [
+        "按钮呼吸动效",
+        "波纹扩散动效",
+        "光环围绕动效",
+        "积分栏动画",
+        "重写积分栏动画",
+        "动画学习",
+        "定时器动画"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +60,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let viewController = ScoreUpgradeEffectViewController()
             navigationController?.pushViewController(viewController, animated: true)
         case 4:
+            let viewController = NewScoreUpgradeEffectVC()
+            navigationController?.pushViewController(viewController, animated: true)
+        case 5:
             let viewController = AnimationLearningViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        case 6:
+            let viewController = TimerAnimationViewController()
             navigationController?.pushViewController(viewController, animated: true)
         default:
             break
