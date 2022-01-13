@@ -18,7 +18,8 @@ class ViewController: UIViewController {
         "积分栏动画",
         "重写积分栏动画",
         "动画学习",
-        "定时器动画"
+        "定时器动画",
+        "礼物动画"
     ]
     
     override func viewDidLoad() {
@@ -67,6 +68,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         case 6:
             let viewController = TimerAnimationViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        case 7:
+            let viewController = GiftViewController()
             navigationController?.pushViewController(viewController, animated: true)
         default:
             break

@@ -30,6 +30,12 @@
 		18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D1A27882BB400E2C1C9 /* TimerAnimationViewController.swift */; };
 		18737D1E278970D600E2C1C9 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D1D278970D600E2C1C9 /* TestViewController.swift */; };
 		18737D2027898B0600E2C1C9 /* TestFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18737D1F27898B0600E2C1C9 /* TestFlowLayout.swift */; };
+		18934C73278ED799001D0506 /* GiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C72278ED799001D0506 /* GiftViewController.swift */; };
+		18934C75278ED889001D0506 /* GiftPushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C74278ED889001D0506 /* GiftPushView.swift */; };
+		18934C78278ED91E001D0506 /* GiftPushContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C77278ED91E001D0506 /* GiftPushContainer.swift */; };
+		18934C7A278EEE83001D0506 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C79278EEE83001D0506 /* UIView+Gradient.swift */; };
+		18934C7C278EEFB8001D0506 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C7B278EEFB8001D0506 /* GradientLabel.swift */; };
+		18934C7F278F0262001D0506 /* GiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C7E278F0262001D0506 /* GiftModel.swift */; };
 		18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */; };
 		18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6995C2783FBBC00DBB67F /* GradeView.swift */; };
 		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
@@ -62,6 +68,12 @@
 		18737D1A27882BB400E2C1C9 /* TimerAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationViewController.swift; sourceTree = "<group>"; };
 		18737D1D278970D600E2C1C9 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		18737D1F27898B0600E2C1C9 /* TestFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFlowLayout.swift; sourceTree = "<group>"; };
+		18934C72278ED799001D0506 /* GiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewController.swift; sourceTree = "<group>"; };
+		18934C74278ED889001D0506 /* GiftPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftPushView.swift; sourceTree = "<group>"; };
+		18934C77278ED91E001D0506 /* GiftPushContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftPushContainer.swift; sourceTree = "<group>"; };
+		18934C79278EEE83001D0506 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		18934C7B278EEFB8001D0506 /* GradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
+		18934C7E278F0262001D0506 /* GiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftModel.swift; sourceTree = "<group>"; };
 		18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLearningViewController.swift; sourceTree = "<group>"; };
 		18B6995C2783FBBC00DBB67F /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +113,7 @@
 		1827E16D277DAE360082EDD7 /* iOSEffect */ = {
 			isa = PBXGroup;
 			children = (
+				18934C71278ED77F001D0506 /* Gift */,
 				18737D1C278970BB00E2C1C9 /* TestViewController */,
 				18737D1927882B9000E2C1C9 /* TimerAnimation */,
 				18AA77CE2785436200D36B15 /* AnimationLearning */,
@@ -225,6 +238,27 @@
 				18737D1F27898B0600E2C1C9 /* TestFlowLayout.swift */,
 			);
 			path = TestViewController;
+			sourceTree = "<group>";
+		};
+		18934C71278ED77F001D0506 /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				18934C76278ED8B7001D0506 /* View */,
+				18934C72278ED799001D0506 /* GiftViewController.swift */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		18934C76278ED8B7001D0506 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18934C7E278F0262001D0506 /* GiftModel.swift */,
+				18934C77278ED91E001D0506 /* GiftPushContainer.swift */,
+				18934C74278ED889001D0506 /* GiftPushView.swift */,
+				18934C7B278EEFB8001D0506 /* GradientLabel.swift */,
+				18934C79278EEE83001D0506 /* UIView+Gradient.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		18AA77CE2785436200D36B15 /* AnimationLearning */ = {
@@ -368,10 +402,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18737D152787235D00E2C1C9 /* NewScoreUpgradeEffectVC.swift in Sources */,
+				18934C7C278EEFB8001D0506 /* GradientLabel.swift in Sources */,
 				18737D2027898B0600E2C1C9 /* TestFlowLayout.swift in Sources */,
 				1827E19C277DAFB90082EDD7 /* WaveView.swift in Sources */,
+				18934C73278ED799001D0506 /* GiftViewController.swift in Sources */,
 				1827E196277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift in Sources */,
 				1827E173277DAE360082EDD7 /* ViewController.swift in Sources */,
+				18934C7A278EEE83001D0506 /* UIView+Gradient.swift in Sources */,
 				18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */,
 				18737D182787248300E2C1C9 /* NewGradeView.swift in Sources */,
 				03C755D52783265A005E84CF /* StarView.swift in Sources */,
@@ -384,6 +421,9 @@
 				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
 				18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */,
 				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
+				18934C78278ED91E001D0506 /* GiftPushContainer.swift in Sources */,
+				18934C7F278F0262001D0506 /* GiftModel.swift in Sources */,
+				18934C75278ED889001D0506 /* GiftPushView.swift in Sources */,
 				1827E195277DAFB90082EDD7 /* RippleView.swift in Sources */,
 				1827E197277DAFB90082EDD7 /* ProgressBar.swift in Sources */,
 				1827E199277DAFB90082EDD7 /* LightAroundEffectViewController.swift in Sources */,
