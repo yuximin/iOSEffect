@@ -31,31 +31,38 @@ class GiftViewController: UIViewController {
         view.addSubview(sendGift1)
         view.addSubview(sendGift2)
         view.addSubview(sendGift3)
+        view.addSubview(moveBtn)
         
         sendGift3.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview().offset(80)
             make.bottom.equalToSuperview().offset(-50)
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
         
         sendGift2.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(sendGift3.snp.top).offset(-10)
+            make.centerX.equalToSuperview().offset(-80)
+            make.bottom.equalTo(sendGift3)
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
         
         sendGift1.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(sendGift2.snp.top).offset(-10)
+            make.centerX.equalToSuperview().offset(80)
+            make.bottom.equalTo(sendGift3.snp.top).offset(-10)
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
         
         sendGift0.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(sendGift1.snp.top).offset(-10)
+            make.centerX.equalToSuperview().offset(-80)
+            make.bottom.equalTo(sendGift1)
+            make.width.equalTo(150)
+            make.height.equalTo(40)
+        }
+        
+        moveBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(sendGift0.snp.top).offset(-10)
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
@@ -104,12 +111,26 @@ class GiftViewController: UIViewController {
         return btn
     }()
     
+    private lazy var moveBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("位置变动", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.addTarget(self, action: #selector(onTapMoveButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
     // MARK: - Action
     
     @objc private func onTapButton(_ sender: UIButton) {
         let tag = sender.tag
         let model = GiftModel(tag: tag, headerUrl: "icon1", userName: "Andre Mack", toUserName: "Jack", giftImageUrl: "爱心礼物", number: 1)
         giftPushContainer.presentGiftPush(with: model)
+    }
+    
+    @objc private func onTapMoveButton(_ sender: UIButton) {
+        giftPushContainer.snp.updateConstraints { make in
+            make.top.equalToSuperview().offset(300)
+        }
     }
 
 }

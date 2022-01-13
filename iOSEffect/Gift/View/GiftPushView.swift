@@ -205,9 +205,7 @@ class GiftPushView: UIView {
     
     // MARK: - animation
     
-    func showCombo() {
-        resetHideTimer()
-        
+    func showCombo() {        
         if isComboing {
             return
         }
@@ -217,6 +215,7 @@ class GiftPushView: UIView {
     
     private func doCombo() {
         if let model = model, model.number > comboNum {
+            resetHideTimer()
             isComboing = true
             comboNum += 1
             numberLab.showAnimation { [weak self] in
