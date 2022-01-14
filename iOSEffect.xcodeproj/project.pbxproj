@@ -36,6 +36,7 @@
 		18934C7A278EEE83001D0506 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C79278EEE83001D0506 /* UIView+Gradient.swift */; };
 		18934C7C278EEFB8001D0506 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C7B278EEFB8001D0506 /* GradientLabel.swift */; };
 		18934C7F278F0262001D0506 /* GiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C7E278F0262001D0506 /* GiftModel.swift */; };
+		18934C8127901A26001D0506 /* GiftFlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18934C8027901A26001D0506 /* GiftFlyView.swift */; };
 		18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */; };
 		18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6995C2783FBBC00DBB67F /* GradeView.swift */; };
 		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
@@ -74,6 +75,7 @@
 		18934C79278EEE83001D0506 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		18934C7B278EEFB8001D0506 /* GradientLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
 		18934C7E278F0262001D0506 /* GiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftModel.swift; sourceTree = "<group>"; };
+		18934C8027901A26001D0506 /* GiftFlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftFlyView.swift; sourceTree = "<group>"; };
 		18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLearningViewController.swift; sourceTree = "<group>"; };
 		18B6995C2783FBBC00DBB67F /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,7 @@
 		18934C76278ED8B7001D0506 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18934C8027901A26001D0506 /* GiftFlyView.swift */,
 				18934C7E278F0262001D0506 /* GiftModel.swift */,
 				18934C77278ED91E001D0506 /* GiftPushContainer.swift */,
 				18934C74278ED889001D0506 /* GiftPushView.swift */,
@@ -419,6 +422,7 @@
 				1827E19F277DDACF0082EDD7 /* ScoreLabel.swift in Sources */,
 				18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */,
 				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
+				18934C8127901A26001D0506 /* GiftFlyView.swift in Sources */,
 				18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */,
 				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
 				18934C78278ED91E001D0506 /* GiftPushContainer.swift in Sources */,

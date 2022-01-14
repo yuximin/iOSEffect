@@ -46,7 +46,6 @@ class GiftPushContainer: UIView {
             if idx == 0 {
                 giftPushView.snp.makeConstraints { make in
                     make.leading.equalToSuperview()
-                    make.trailing.lessThanOrEqualToSuperview()
                     make.top.equalToSuperview().offset(8)
                 }
                 continue
@@ -56,14 +55,12 @@ class GiftPushContainer: UIView {
             if idx == maxCount - 1 {
                 giftPushView.snp.makeConstraints { make in
                     make.leading.equalToSuperview()
-                    make.trailing.lessThanOrEqualToSuperview()
                     make.top.equalTo(previousView.snp.bottom).offset(15)
                     make.bottom.equalToSuperview().offset(-8)
                 }
             } else {
                 giftPushView.snp.makeConstraints { make in
                     make.leading.equalToSuperview()
-                    make.trailing.lessThanOrEqualToSuperview()
                     make.top.equalTo(previousView.snp.bottom).offset(15)
                 }
             }

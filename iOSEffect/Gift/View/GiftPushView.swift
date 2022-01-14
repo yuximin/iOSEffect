@@ -205,7 +205,7 @@ class GiftPushView: UIView {
     
     // MARK: - animation
     
-    func showCombo() {        
+    func showCombo() {
         if isComboing {
             return
         }
