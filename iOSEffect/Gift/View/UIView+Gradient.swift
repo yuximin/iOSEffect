@@ -9,18 +9,28 @@ import Foundation
 import UIKit
 
 extension UIView {
+    private struct RuntimeKey {
+        static let gradientLayerKey = UnsafeRawPointer.init(bitPattern: "GradientLayerKey".hashValue)
+    }
     
-    static let VIEW_GRADIENT_KEY = "ohla_gradient_layer_key"
+    // 渐变层
+    private var gradientLayer: CAGradientLayer? {
+        get {
+            objc_getAssociatedObject(self, UIView.RuntimeKey.gradientLayerKey!) as? CAGradientLayer
+        }
+        set {
+            objc_setAssociatedObject(self, UIView.RuntimeKey.gradientLayerKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
     
-    // 获取渐变色
+    // 获取渐变层
     func gradientFetchLayer() -> CAGradientLayer {
-        let mark = UIView.VIEW_GRADIENT_KEY
-        var gradientLayer = info[mark] as? CAGradientLayer
+        var gradientLayer = self.gradientLayer
         if gradientLayer == nil {
             gradientLayer = CAGradientLayer()
             gradientLayer?.frame = bounds
             layer.insertSublayer(gradientLayer!, at: 0)
-            info[mark] = gradientLayer
+            self.gradientLayer = gradientLayer
         }
         return gradientLayer ?? CAGradientLayer()
     }
@@ -70,28 +80,8 @@ extension UIView {
     func removeGradient() -> UIView {
         let gradientLayer = gradientFetchLayer()
         gradientLayer.removeFromSuperlayer()
-        info[UIView.VIEW_GRADIENT_KEY] = nil
+        self.gradientLayer = nil
         return self
     }
     
-}
-
-private var key: Void?
-
-extension NSObject {
-
-    var info: [String: Any] {
-        set {
-            objc_setAssociatedObject(self, &key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        get {
-            var obj = objc_getAssociatedObject(self, &key) as? [String: Any]
-            if obj?.count ?? 0 <= 0 {
-                objc_setAssociatedObject(self, &key, [String: Any](), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                obj = objc_getAssociatedObject(self, &key) as? [String: Any]
-            }
-            return obj!
-        }
-    }
-
 }
