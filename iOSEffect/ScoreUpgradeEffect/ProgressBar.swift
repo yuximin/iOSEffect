@@ -30,6 +30,8 @@ class ProgressBar: UIView {
             changeToProgress(progress)
         }
     }
+    
+    var targetProgress: CGFloat = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,6 +72,7 @@ class ProgressBar: UIView {
     
     func startAnimation(to ratio: CGFloat, duration: CGFloat) {
         isAnimating = true
+        targetProgress = ratio
         barView.layer.add(progressAnimation(ratio, duration: duration), forKey: ProgressAnimationKey)
     }
     
@@ -79,6 +82,7 @@ class ProgressBar: UIView {
         }
         isAnimating = false
         
+        progress = targetProgress
         barView.layer.removeAnimation(forKey: ProgressAnimationKey)
     }
     
@@ -104,7 +108,6 @@ class ProgressBar: UIView {
         animationGroup.duration = duration
         animationGroup.fillMode = .forwards
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.setValue(ratio, forKey: "ratio")
         animationGroup.delegate = self
         return animationGroup
     }
@@ -117,10 +120,8 @@ extension ProgressBar: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag {
             isAnimating = false
-        }
-        
-        if let ratio = anim.value(forKey: "ratio") as? CGFloat {
-            progress = ratio
+            barView.layer.removeAnimation(forKey: ProgressAnimationKey)
+            progress = targetProgress
         }
     }
 }
