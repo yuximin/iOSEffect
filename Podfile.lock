@@ -1,16 +1,20 @@
 PODS:
+  - BDAlphaPlayer (1.2.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - BDAlphaPlayer
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
+    - BDAlphaPlayer
     - SnapKit
 
 SPEC CHECKSUMS:
+  BDAlphaPlayer: 8af2048ee8ef8c31a73a99f83882cf4242e89df0
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 20833995dbdc30ab2d22c52adfefa270b46981c0
+PODFILE CHECKSUM: ce7e4d58317dcca5da848d5581f99fae0c2e7021
 
 COCOAPODS: 1.11.2

@@ -1,0 +1,10 @@
+{
+    "portrait": {
+        "align": 2,
+        "path": "香槟_OHLA.mp4",
+    },
+    "landscape": {
+        "path": "香槟_OHLA.mp4",
+        "align": 8
+    }
+}

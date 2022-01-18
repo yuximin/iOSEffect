@@ -27,7 +27,7 @@ class TestFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         
-        let cellWidth = UIScreen.main.bounds.width / CGFloat(rowCountPrePage)
+        let cellWidth = self.collectionView!.bounds.size.width / CGFloat(rowCountPrePage)
         let cellHeight = cellWidth
         itemSize = CGSize(width: cellWidth, height: cellHeight)
         minimumLineSpacing = 0.0
@@ -66,7 +66,7 @@ class TestFlowLayout: UICollectionViewFlowLayout {
         if rem > 0 {
             page += 1
         }
-        return CGSize(width: CGFloat(page) * UIScreen.main.bounds.width, height: 0)
+        return CGSize(width: CGFloat(page) * self.collectionView!.bounds.size.width, height: 0)
     }
 
 }

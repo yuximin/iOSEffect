@@ -1,0 +1,10 @@
+{
+    "portrait": {
+        "align": 2,
+        "path": "sing_failed_en.mp4",
+    },
+    "landscape": {
+        "path": "sing_failed_en.mp4",
+        "align": 8
+    }
+}

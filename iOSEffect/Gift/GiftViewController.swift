@@ -37,6 +37,7 @@ class GiftViewController: UIViewController {
         view.addSubview(header0)
         view.addSubview(header1)
         view.addSubview(header2)
+        view.addSubview(giftDynamicEffectPlayerView)
         
         sendGift3.snp.makeConstraints { make in
             make.centerX.equalToSuperview().offset(80)
@@ -90,12 +91,16 @@ class GiftViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
             make.width.height.equalTo(30)
         }
+        
+        giftDynamicEffectPlayerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     // MARK: - lazy view
     
-    private lazy var giftPushContainer: GiftPushContainer = {
-        let view = GiftPushContainer()
+    private lazy var giftPushContainer: GiftPushContent = {
+        let view = GiftPushContent()
         return view
     }()
     
@@ -161,6 +166,12 @@ class GiftViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var giftDynamicEffectPlayerView: GiftDynamicEffectPlayerView = {
+        let view = GiftDynamicEffectPlayerView()
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    
     // MARK: - Action
     
     @objc private func onTapButton(_ sender: UIButton) {
@@ -178,21 +189,25 @@ class GiftViewController: UIViewController {
             endPoint = header1.center
             offset = -100
             duration = 1.0
+            giftDynamicEffectPlayerView.play(with: "香槟_OHLA")
         case 1:
             startPoint = header1.center
             endPoint = header0.center
             offset = -100
             duration = 1.0
+            giftDynamicEffectPlayerView.play(with: "yinyu")
         case 2:
             startPoint = header0.center
             endPoint = header2.center
             offset = 0
             duration = 2.0
+            giftDynamicEffectPlayerView.play(with: "火箭_OHLA")
         default:
             startPoint = header0.center
             endPoint = header1.center
             offset = -100
             duration = 1.0
+            giftDynamicEffectPlayerView.stopCurrentPlay()
         }
         
         let image = UIImage(named: "爱心礼物") ?? UIImage()

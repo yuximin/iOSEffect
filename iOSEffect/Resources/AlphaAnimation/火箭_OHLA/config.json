@@ -1,0 +1,10 @@
+{
+    "portrait": {
+        "align": 2,
+        "path": "火箭_OHLA.mp4",
+    },
+    "landscape": {
+        "path": "火箭_OHLA.mp4",
+        "align": 8
+    }
+}

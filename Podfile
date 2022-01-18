@@ -7,5 +7,5 @@ target 'iOSEffect' do
 
   # Pods for iOSEffect
   pod 'SnapKit', '~> 5.0.0'
-
+  pod 'BDAlphaPlayer'
 end
