@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         "动画学习",
         "定时器动画",
         "礼物动画",
-        "自定义CollectionViewFlowLayout"
+        "自定义CollectionViewFlowLayout",
+        "仿 AppStore CollectionView 翻页"
     ]
     
     override func viewDidLoad() {
@@ -75,6 +76,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         case 8:
             let viewController = TestViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        case 9:
+            let viewController = CustomCollectionViewController()
             navigationController?.pushViewController(viewController, animated: true)
         default:
             break

@@ -42,6 +42,8 @@
 		18969CAD27953AF800769985 /* yinyu in Resources */ = {isa = PBXBuildFile; fileRef = 18969CAA27953AF800769985 /* yinyu */; };
 		18969CAF27953B3500769985 /* GiftDynamicEffectPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18969CAE27953B3500769985 /* GiftDynamicEffectPlayerView.swift */; };
 		18969CB127953CFD00769985 /* sing_failed_en in Resources */ = {isa = PBXBuildFile; fileRef = 18969CB027953CFD00769985 /* sing_failed_en */; };
+		18969CB627983A1F00769985 /* CustomCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18969CB527983A1F00769985 /* CustomCollectionViewController.swift */; };
+		18969CB827983C7000769985 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18969CB727983C7000769985 /* CustomCollectionViewFlowLayout.swift */; };
 		18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */; };
 		18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6995C2783FBBC00DBB67F /* GradeView.swift */; };
 		C52AEEB1467A7EBC12E6B9F6 /* Pods_iOSEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */; };
@@ -86,6 +88,8 @@
 		18969CAA27953AF800769985 /* yinyu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yinyu; sourceTree = "<group>"; };
 		18969CAE27953B3500769985 /* GiftDynamicEffectPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftDynamicEffectPlayerView.swift; sourceTree = "<group>"; };
 		18969CB027953CFD00769985 /* sing_failed_en */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sing_failed_en; sourceTree = "<group>"; };
+		18969CB527983A1F00769985 /* CustomCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewController.swift; sourceTree = "<group>"; };
+		18969CB727983C7000769985 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		18AA77CF2785438F00D36B15 /* AnimationLearningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLearningViewController.swift; sourceTree = "<group>"; };
 		18B6995C2783FBBC00DBB67F /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		77DEAF86BE28FEA366ED0EC1 /* Pods_iOSEffect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSEffect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,7 @@
 		1827E16D277DAE360082EDD7 /* iOSEffect */ = {
 			isa = PBXGroup;
 			children = (
+				18969CB4279839EC00769985 /* CustomCollectionView */,
 				18934C71278ED77F001D0506 /* Gift */,
 				18737D1C278970BB00E2C1C9 /* TestViewController */,
 				18737D1927882B9000E2C1C9 /* TimerAnimation */,
@@ -295,6 +300,15 @@
 			path = AlphaAnimation;
 			sourceTree = "<group>";
 		};
+		18969CB4279839EC00769985 /* CustomCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				18969CB527983A1F00769985 /* CustomCollectionViewController.swift */,
+				18969CB727983C7000769985 /* CustomCollectionViewFlowLayout.swift */,
+			);
+			path = CustomCollectionView;
+			sourceTree = "<group>";
+		};
 		18AA77CE2785436200D36B15 /* AnimationLearning */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +460,7 @@
 				18934C73278ED799001D0506 /* GiftViewController.swift in Sources */,
 				1827E196277DAFB90082EDD7 /* ScoreUpgradeEffectViewController.swift in Sources */,
 				1827E173277DAE360082EDD7 /* ViewController.swift in Sources */,
+				18969CB827983C7000769985 /* CustomCollectionViewFlowLayout.swift in Sources */,
 				18934C7A278EEE83001D0506 /* UIView+Gradient.swift in Sources */,
 				18AA77D02785438F00D36B15 /* AnimationLearningViewController.swift in Sources */,
 				18737D182787248300E2C1C9 /* NewGradeView.swift in Sources */,
@@ -458,6 +473,7 @@
 				18B6995D2783FBBC00DBB67F /* GradeView.swift in Sources */,
 				1827E194277DAFB90082EDD7 /* RippleEffectViewController.swift in Sources */,
 				18969CAF27953B3500769985 /* GiftDynamicEffectPlayerView.swift in Sources */,
+				18969CB627983A1F00769985 /* CustomCollectionViewController.swift in Sources */,
 				18934C8127901A26001D0506 /* GiftFlyView.swift in Sources */,
 				18737D1B27882BB400E2C1C9 /* TimerAnimationViewController.swift in Sources */,
 				1827E19B277DAFB90082EDD7 /* UserHomePageTagView.swift in Sources */,
